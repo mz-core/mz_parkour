@@ -7,9 +7,19 @@ local allowedStates = {
 
 local rateWindows = {}
 
+local function playerActionAllowed(source)
+    local ok, allowed, result = pcall(function()
+        return exports['mz_core']:CanPlayerPerformAction(source, 'emote.use')
+    end)
+    return ok and allowed == true and type(result) == 'table' and result.allowed == true
+end
+
 RegisterNetEvent('mz_parkour:server:setState', function(nextState)
     local sourceId = source
     if type(nextState) ~= 'string' or not allowedStates[nextState] then
+        return
+    end
+    if nextState ~= MZParkourStates.IDLE and not playerActionAllowed(sourceId) then
         return
     end
 

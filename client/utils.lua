@@ -78,6 +78,13 @@ function MZParkourUtils.Notify(message)
 end
 
 function MZParkourUtils.IsRestricted(ped)
+    local guardOk, allowed = pcall(function()
+        return exports['mz_core']:CanLocalPlayerPerformAction('emote.use')
+    end)
+    if not guardOk or allowed ~= true then
+        return true
+    end
+
     if not DoesEntityExist(ped) or IsEntityDead(ped) or IsPedInAnyVehicle(ped, false) then
         return true
     end

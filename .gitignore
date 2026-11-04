@@ -1,0 +1,5 @@
+# Temporary GTA IV input staging; canonical workspace belongs to mz_animations.
+/exemplogta4/
+*.wad
+*.oad
+*.onim

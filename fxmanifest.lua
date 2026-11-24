@@ -5,7 +5,7 @@ lua54 'yes'
 
 author 'Mazus / MZ Core'
 description 'Parkour nativo inspirado no GTA IV para mz_core'
-version '0.2.0-taskclimb'
+version '0.2.1'
 
 dependencies {
     'mz_core',
